@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card text-center">
+   <div class="card-body">
+    <h3>ELECTION POLLS</h3>
+    <p>
+      Election polls is a process of deploying surveys or polls in the election
+      year to focus on issues prioritized by people, analyze engagement of people
+      in the elections, understand what people think of the electoral candidates,
+      and to whom people favor on voting day. Even though elections are not at
+      the forefront, election polls are conducted with focused questions to identify
+      public opinion about ruling and opposition parties, performance of the elected
+      candidate or to predict the results of the concluded elections. In fact,
+      election polls are used by many electoral candidates to understand pressing
+      issues in their constituencies, flaws in the campaigns, and to analyze voter’s mindset.
+    </p>
+    <a class="btn btn-dark" href="{% url 'polls:index' %}">View Available Polls</a>
+   </div>
+</div>
+{% endblock %}

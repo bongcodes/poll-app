@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} - Vote detail{% endblock %}
+
+{% block content %}
+
+{% if error_message %}
+<p class="alert alert-danger alert-dismissible fade show">
+	<strong>{{ error_message }}</strong>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	</button>
+</p>
+{% endif %}
+
+<h2 class="text-center mb-3">{{ question.question }}</h2>
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+
+{% for choice in question.choice_set.all %}
+
+  <div class="form-check">
+    <input class="text-center"
+           type="radio"
+           name="choice"
+           class="form-check-input"
+           id="choice{{ forloop.counter }}"
+           value="{{ choice.id }}"
+     />
+     <label for="choice{{ forloop.counter }}">{{ choice.choice }}</label>
+  </div>
+
+{% endfor %}
+
+<input type="submit" value="vote", class="btn btn-success btn-sm btn-block mt-4"/>
+</form>
+<br>
+
+<a class="btn btn-secondary btn-sm" href="{% url 'polls:index' %}">Back to Polls</a>
+
+{% endblock %}
